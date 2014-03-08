@@ -381,9 +381,8 @@
     UE.commands["deleterow"] = {
         queryCommandState: function () {
             var tableItems = getTableItemsByRange(this);
-            if (!tableItems.cell) {
-                return -1;
-            }
+            return tableItems.cell ? 0 : -1;
+			return 0;
         },
         execCommand: function () {
             var cell = getTableItemsByRange(this).cell,
@@ -473,7 +472,7 @@
     UE.commands["deletecol"] = {
         queryCommandState: function () {
             var tableItems = getTableItemsByRange(this);
-            if (!tableItems.cell) return -1;
+            return tableItems.cell ? 0 : -1;
         },
         execCommand: function () {
             var cell = getTableItemsByRange(this).cell,
